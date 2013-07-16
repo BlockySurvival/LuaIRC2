@@ -96,6 +96,18 @@ handlers["366"] = function(o, prefix, me, channel, msg)
 	end
 end
 
+local function handle_bad_nick(o, prefix, x, badnick)
+	o.nick = o.nick_generator(badnick)
+	o.send("NICK %s", o.nick)
+	o.send("USER %s 0 * :%s", o.username, o.realname)
+end
+
+-- ERR_ERRONEOUSNICKNAME
+handlers["432"] = handle_bad_nick
+
+-- ERR_NICKNAMEINUSE
+handlers["433"] = handle_bad_nick
+
 --no topic
 handlers["331"] = function(o, prefix, me, channel)
 	o:invoke("OnTopic", channel, nil)

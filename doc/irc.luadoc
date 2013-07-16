@@ -25,8 +25,9 @@
 module "irc"
 
 --- Create a new IRC object. Use <code>irc:connect</code> to connect to a server.
--- @param user Table with fields <code>nick</code>, <code>username</code> and <code>realname</code>.
+-- @param user Table with fields <code>nick</code>, <code>username</code>, <code>realname</code>, and <code>nick_generator</code>.
 -- The <code>nick</code> field is required.
+-- The <code>nick_generator</code> field is a fuction that should return a new nick name given the old one.
 --
 -- @return Returns a new <code>irc</code> object.
 function new(user)

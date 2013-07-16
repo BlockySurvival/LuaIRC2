@@ -38,6 +38,8 @@ function new(user)
 		realname = user.realname or "Lua owns";
 		hooks = {};
 		track_users = true;
+		nick_generator = user.nick_generator or
+				function(oldnick) error("Nick already in use.") end
 	}
 	return setmetatable(o, meta_preconnect)
 end
