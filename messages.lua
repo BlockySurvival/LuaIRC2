@@ -48,7 +48,7 @@ function msg_meta:toRFC1459()
 
 	s = s..self.command
 
-	local argnum = #self.args
+	local argnum = self.args and #self.args or 0
 	for i = 1, argnum do
 		local arg = self.args[i]
 		local startsWithColon = (arg:sub(1, 1) == ":")
