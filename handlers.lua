@@ -138,7 +138,7 @@ end
 
 local function needNewNick(conn, msg)
 	local newnick = conn.nickGenerator(msg.args[2])
-	conn:queue(irc.msgs.nick(newnick))
+	conn:queue(irc2.msgs.nick(newnick))
 end
 
 -- ERR_ERRONEUSNICKNAME (Misspelt but remains for historical reasons)
